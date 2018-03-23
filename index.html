@@ -12,6 +12,8 @@
         
         <div id="app">
             {{ msg }}
+            
+            <p v-bind:title="title">Teste com Title</p>
         </div>
 
         
@@ -22,7 +24,8 @@
                 
                 el: "#app",
                 data: {
-                    msg: 'Iniciando com VueJS'                                    
+                    msg: 'Iniciando com VueJS',
+                    title: 'Olá, eu sou o título!'
                 }
                 
             });
