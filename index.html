@@ -18,6 +18,10 @@
             <p v-if="condicao">Este parágrafo só aparecerá se o if for verdadeiro</p>
             
             <p v-for="registro in registros">{{registro.titulo}}</p>
+            
+            <button v-if="!clicou" v-on:click"usuarioClickou">salvar</button>
+            <button v-if="clicou" v-on:click"usuarioClickou">aguarde...</button>
+             
         </div>
 
         
@@ -37,8 +41,13 @@
                         {titulo: 'registro3'},
                         {titulo: 'registro4'},
                         {titulo: 'registro5'}
-                    ]
-                    
+                    ],
+                    clicou: false
+                },
+                methods: {
+                    usuarioClicou: function(){
+                        this.clicou = !this.clicou;
+                    }
                 }
                 
             });
