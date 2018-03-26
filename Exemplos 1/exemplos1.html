@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Introdução ao VueJS </title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+
+	<body>
+        
+        <div id="app">
+            {{ msg }}
+            
+            <p v-bind:title="title">Teste com Title</p>
+            
+            <p v-if="condicao">Este parágrafo só aparecerá se o if for verdadeiro</p>
+            
+            <p v-for="registro in registros">{{registro.titulo}}</p>
+            
+            <button v-if="!clicou" v-on:click="usuarioClicou">salvar</button>
+            <button v-if="clicou" v-on:click="usuarioClicou">aguarde...</button>
+            
+            <p>
+            <input type="text" v-model="usuario.nome" />
+            </p>
+            <p>Nome: {{usuario.nome}}</p>
+             
+        </div>
+
+        
+        
+        <script type="text/javascript">
+        
+            var app = new Vue({
+                
+                el: "#app",
+                data: {
+                    msg: 'Iniciando com VueJS',
+                    title: 'Olá, eu sou o título!',
+                    condicao: false,
+                    registros: [
+                        {titulo: 'registro1'},
+                        {titulo: 'registro2'},
+                        {titulo: 'registro3'},
+                        {titulo: 'registro4'},
+                        {titulo: 'registro5'}
+                    ],
+                    clicou: false,
+                    usuario: {nome:""}
+                },
+                methods: {
+                    usuarioClicou: function(){
+                        this.clicou = !this.clicou;
+                    }
+                }
+                
+            });
+            
+        </script>
+</body>
+</html>
