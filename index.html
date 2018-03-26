@@ -20,6 +20,11 @@
             
             <gui-tabela v-bind:titulos="['Nome', 'Descrição', 'Link']" v-bind:registros="registros"></gui-tabela>
             
+            <p v-once>{{meuTitulo}}</p>
+            
+            
+            <p v-html="html">{{}}</p>
+            
         
         </div>
         
@@ -76,8 +81,8 @@
                         descricao: 'Um anime que só gente foda gosta',
                         link: 'www.google.com.br'
                         }
-                        
-                    ]
+                    ],
+                    html: '<a href="#">Esse é um link!</a>'
                     
                 }
                 
