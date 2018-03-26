@@ -12,53 +12,23 @@
 
         <div id="app">
 
-
-            <!--            V-BIND gruda variáveis. Quando elas mudam, aqui muda também-->
-            <gui-titulo v-bind:titulo="meuTitulo"></gui-titulo>
-
-            <!--            V-Model manipula variáveis-->
-            <input type="text" v-model="meuTitulo">
-            <p></p>
-
-
-            <!--            Exemplo tabela-->
-            <gui-tabela v-bind:titulos="['Nome', 'Descrição', 'Link']" v-bind:registros="registros"></gui-tabela>
-
-            <!--            Mostra o elemento apenas uma vez, e não o atualiza mais, mesmo que sua variável seja mudada-->
-            <p v-once>{{meuTitulo}}</p>
-
-            <!--        Cria um link a partir do objeto passado via v-html-->
-            <p v-html="html">{{}}</p>
-
-
-            <!--            Lidando com dinheiro-->
-            <p>Forma no Javascript Puro </p>
-            <p>{{ 'R$' + (23.9032353442).toFixed(2).replace('.',',') }} -> 23,98 </p>
-
-            <!--            O pipe serve para utilizar filtros definidos anteriormente -->
-            <p>Forma no VueJS</p>
-            <p>{{ 24.9032353442 | TrataValor }} -> 23,98</p>
-
-
-            <!--            Computado vs Metodos-->
-            <ul>
-                <li v-for="registro in registros"> 
-                    {{registro.titulo}} - {{registro.descricao}} - {{registro.link}} - {{registro.valor | TrataValor}}
-                </li>
-            </ul>
-
-            <p>Total (methods): {{totalValorMetodo() | TrataValor}}</p>
+            <gui-titulo titulo="Formulários"></gui-titulo>
             
-            <p>Total (methods): {{totalValorComputado | TrataValor}}</p>
-            
-            <p>Conta Methods: {{contaMethods}}</p>
-            <p>Conta Computada: {{contaComputed}}</p>
-            
-             <p>
-                <input type="text" v-model="nome" placeholder="nome" />
+            <p>Texto: {{texto}}</p>
+            <p>
+                <input type="text" v-model="texto"/>
             </p>
             
-            <p>Alterações: {{contaAlteracoes}}</p>
+            <p>TextArea: {{textarea}}</p>
+            
+            <p style="white-space: pre-line"> {{textarea}}</p>
+            
+            <p>
+                <textarea v-model="textarea" rows="8" cols="80"/> </textarea>
+            </p>
+            
+            
+
         </div>
 
 
@@ -73,92 +43,14 @@
 
             });
 
-            Vue.component('gui-tabela', {
-
-                props: ['titulos','registros'],
-                template:'<table style="border:1px solid black; width: 100%">'+
-                '<thead>'+
-                '<tr>'+
-                '<th v-for="titulo in titulos">{{titulo}}</th>'+
-                '</tr>'+
-                '</thead>'+
-                '<tbody>'+
-                '<tr v-for="registro in registros">'+
-                '<td v-for="item in registro">{{item}}</td>'+
-
-                '</tr>'+
-
-                '</tbody>'+
-                '</table>'
-
-            }); 
-
-
             var app = new Vue({
 
                 el: "#app",
                 data: {
-                    meuTitulo: 'Esse é o Título',
-                    registros:[
-                        {
-                            titulo: 'Game of Thrones',
-                            descricao: 'Uma série que muita gente morre',
-                            link: 'www.google.com.br',
-                            valor: 23.33223
-                        },
-                        {
-                            titulo: 'Bojack Horseman',
-                            descricao: 'Uma série de um cavalo que não presta',
-                            link: 'www.google.com.br',
-                            valor: 454.21345
-                        },
-                        {
-                            titulo: 'Devilman Crybaby',
-                            descricao: 'Um anime que só gente foda gosta',
-                            link: 'www.google.com.br',
-                            valor: 10
-                        }
-                    ],
-                    html: '<a href="#">Esse é um link!</a>',
-                    contaMethods: 0,
-                    contaComputed:0,
-                    nome: '',
-                    contaAlteracoes:0
-                },
-                filters:{
-                    // trata o valor quebrado e o transforma em dinheiro.
-                    TrataValor: function(valor){
-                        return ('R$' + (23.9032353442).toFixed(2).replace('.',','));
-                    }
-                },
-                methods: {
-                    totalValorMetodo: function(){
-//                    this.contaMethods++;
-                    total = 0;
-                    for (item of this.registros){
-                    total += total + item.valor;
+                    texto: '',
+                    textarea: ''
                 }
-                return total;
-            }
-                },
-                computed: {
-                    totalValorComputado: function(){
-                    this.contaComputed++;
-                    total = 0;
-                    for (item of this.registros){
-                    total += total + item.valor;
-                }
-                return total;
-            }                   
-                },
-                watch:{
-                        nome: function(valor){
-                            this.contaAlteracoes++;
-                            this.nome = valor.toUpperCase();
-                        }
-                    }
-
-                              });
+                });
 
         </script>
     </body>
