@@ -53,9 +53,12 @@
             
             <p>Conta Methods: {{contaMethods}}</p>
             <p>Conta Computada: {{contaComputed}}</p>
-
-
-
+            
+             <p>
+                <input type="text" v-model="nome" placeholder="nome" />
+            </p>
+            
+            <p>Alterações: {{contaAlteracoes}}</p>
         </div>
 
 
@@ -118,7 +121,9 @@
                     ],
                     html: '<a href="#">Esse é um link!</a>',
                     contaMethods: 0,
-                    contaComputed:0
+                    contaComputed:0,
+                    nome: '',
+                    contaAlteracoes:0
                 },
                 filters:{
                     // trata o valor quebrado e o transforma em dinheiro.
@@ -128,7 +133,7 @@
                 },
                 methods: {
                     totalValorMetodo: function(){
-                    this.contaMethods++;
+//                    this.contaMethods++;
                     total = 0;
                     for (item of this.registros){
                     total += total + item.valor;
@@ -144,9 +149,14 @@
                     total += total + item.valor;
                 }
                 return total;
-            }
-                    
-                }
+            }                   
+                },
+                watch:{
+                        nome: function(valor){
+                            this.contaAlteracoes++;
+                            this.nome = valor.toUpperCase();
+                        }
+                    }
 
                               });
 
