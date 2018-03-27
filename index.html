@@ -13,21 +13,54 @@
         <div id="app">
 
             <gui-titulo titulo="Formulários"></gui-titulo>
-            
+
             <p>Texto: {{texto}}</p>
             <p>
                 <input type="text" v-model="texto"/>
             </p>
-            
-            <p>TextArea: {{textarea}}</p>
-            
-            <p style="white-space: pre-line"> {{textarea}}</p>
-            
+
+            <!--
+<p>TextArea: {{textarea}}</p>
+
+<p style="white-space: pre-line"> {{textarea}}</p>
+
+<p>
+<textarea v-model="textarea" rows="8" cols="80"/> </textarea>
+</p>
+
+-->
+            <p>Checkbox</p>
+
+            <input type="checkbox" id="aceitaTermos" v-model="termos">
+            <label for="aceitaTermos">{{termos}}</label>
+
+            <p>Multiplos Checkboxes: {{notificacoes}}</p>
+
+
             <p>
-                <textarea v-model="textarea" rows="8" cols="80"/> </textarea>
+                <input type="checkbox" id="receberEmail" value="email" v-model="notificacoes">
+                <label for="receberEmail">Receber e-mail</label>
+                <input type="checkbox" id="receberSMS" value="sms" v-model="notificacoes">
+                <label for="receberSMS">Receber SMS</label>
+                <input type="checkbox" id="receberTel" value="telefone" v-model="notificacoes">
+                <label for="receberTel">Receber Ligações</label>
             </p>
-            
-            
+
+            <p>Radio:</p>
+
+            <p>
+                <span>Sexo: {{sexo}}</span>
+                <input type="radio" id="masculino" value="M" v-model="sexo" />
+                <label for="masculino">Masculino</label>
+                
+                <input type="radio" id="feminino" value="F" v-model="sexo" />
+                <label for="feminino">Feminino</label>
+                
+            </p>
+
+
+
+
 
         </div>
 
@@ -48,9 +81,12 @@
                 el: "#app",
                 data: {
                     texto: '',
-                    textarea: ''
+                    textarea: '',
+                    termos: true,
+                    notificacoes: [],
+                    sexo: null
                 }
-                });
+            });
 
         </script>
     </body>
