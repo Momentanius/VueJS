@@ -18,6 +18,8 @@
             <p>
                 <input type="text" v-model="texto"/>
             </p>
+            
+            
 
             <!--
 <p>TextArea: {{textarea}}</p>
@@ -72,6 +74,7 @@
                 </select>
             </p>
             
+<!--            Multiplos select em Vue-->
             <p>
                 MultiSelect {{cores}}                      
             </p>
@@ -84,8 +87,18 @@
                 
                 </select>
             </p>
-
-
+            
+<!--            Atrasa uma possível pesquisa para o atrasar de um botão-->
+            <p>Texto com Lazy: {{busca}}</p>
+            <p>
+                <input type="text" v-model.lazy="busca"/>
+            </p>
+            
+<!--            Força tipos number -->
+            <p>Number: {{idade}} - Tipo = {{typeof idade}}</p>
+            <p>
+                <input type="number" v-model.number="idade"/>
+            </p>
 
 
         </div>
@@ -112,7 +125,9 @@
                     notificacoes: [],
                     sexo: null,
                     ano: null,
-                    cores: ['Vermelho', 'Azul']
+                    cores: ['Vermelho', 'Azul'],
+                    busca: null,
+                    idade: null
                 }
             });
 
