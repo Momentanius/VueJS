@@ -56,8 +56,34 @@
                 <input type="radio" id="feminino" value="F" v-model="sexo" />
                 <label for="feminino">Feminino</label>
                 
+            </p> 
+            
+            
+            <p>
+                Select {{ano}}                      
             </p>
-
+            <p>
+                <select v-model="ano">
+                    <option disabled value="escolha" >Escolha o Ano</option>
+                    <option  value="2017" >Ano 2017</option>
+                    <option  value="2018" >Ano 2018</option>
+                    <option  value="2019" >Ano 2019</option>
+                
+                </select>
+            </p>
+            
+            <p>
+                MultiSelect {{cores}}                      
+            </p>
+            <p>
+                <select multiple v-model="cores">
+                    <option disabled value="escolha" >Escolha as </option>
+                    <option >Azul</option>
+                    <option>Verde</option>
+                    <option>Vermelho</option>
+                
+                </select>
+            </p>
 
 
 
@@ -84,7 +110,9 @@
                     textarea: '',
                     termos: true,
                     notificacoes: [],
-                    sexo: null
+                    sexo: null,
+                    ano: null,
+                    cores: ['Vermelho', 'Azul']
                 }
             });
 
