@@ -28,7 +28,7 @@
         methods: {
             
             cliqueEfeito: function(){
-                this.efeitoClique = 'color: red';
+                this.efeitoClick = 'transform: scale(1.9), margin-right: 110px;'
             },
             removeEfeito: function(){
             this.efeitoClique = null;
