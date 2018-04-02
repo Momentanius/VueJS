@@ -16,6 +16,15 @@
         components: {
             Categoria
         },
+        beforeCreate(){
+          console.log('beforeCreate')  
+        },
+        created(){
+          console.log('Created')  
+        },
+        beforeMount(){
+          console.log('beforeMount')  
+        },
         data () {
             return {
                 nomeProjeto: 'Netflix com VueJS',
